@@ -1,0 +1,60 @@
+# Root Locus
+
+Visualize closed-loop pole movement and study how system parameters, feedback gain, and feedback type affect system stability using MATLAB.
+
+The plant transfer function is:
+
+\[
+G(s)=\frac{1}{s^2+as+b}
+\]
+
+For unity feedback, the closed-loop characteristic equation is:
+
+- Negative feedback: \(s^2+as+(b+K)=0\)
+- Positive feedback: \(s^2+as+(b-K)=0\)
+
+The closed-loop poles are the roots of the corresponding characteristic equation. Their locations determine the system's stability and transient behavior.
+
+| Parameter | Description | Range |
+|---|---|---|
+| \(K\) | Feedback gain | 0–100 |
+| \(a\) | Damping coefficient | 0–10 |
+| \(b\) | Constant coefficient | 0.1–25 |
+| Feedback | Negative or positive | Two modes |
+
+The MATLAB script provides an interactive GUI with:
+
+- Gain, \(a\), and \(b\) sliders.
+- A negative/positive feedback selector.
+- A dynamically recalculated root locus.
+- Open-loop poles marked with black crosses.
+- Closed-loop poles marked with red circles.
+- A live stability status display.
+- Tests that verify pole calculations and expected stability classifications.
+
+## Test Cases
+
+| Test | Parameters | Expected result |
+|---|---|---|
+| 1 | \(K=1,\ a=2,\ b=1\), negative feedback | Stable |
+| 2 | \(K=20,\ a=1,\ b=1\), negative feedback | Stable |
+| 3 | \(K=5,\ a=2,\ b=1\), positive feedback | Unstable |
+| 4 | \(K=1,\ a=5,\ b=1\), negative feedback | Stable |
+| 5 | \(K=0,\ a=2,\ b=1\), negative feedback | Stable |
+
+The tests check calculated pole locations by evaluating the characteristic polynomial at the computed roots and compare the resulting stability classification with the expected outcome.
+
+## Graph Interpretation
+
+- Blue curves represent the root locus over the selected gain range.
+- Black crosses represent open-loop poles.
+- Red circles represent closed-loop poles at the current gain.
+- Poles in the left half-plane indicate asymptotic stability for this second-order system.
+- Poles in the right half-plane indicate instability.
+- Poles on the imaginary axis require further analysis to determine stability.
+
+Increasing gain under negative feedback changes the pole locations and can change the system from overdamped to underdamped behavior. Positive feedback can move poles into the right half-plane and destabilize the system.
+
+## Conclusion
+
+The experiment demonstrates how feedback gain and plant coefficients influence closed-loop pole locations and stability.
